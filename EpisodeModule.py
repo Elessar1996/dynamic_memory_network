@@ -5,7 +5,7 @@ from FeatureVector import FeatureVector
 
 class EpisodeModule(nn.Module):
 
-    def __init__(self, embedding_size, middle_number, num_iterations, device):
+    def __init__(self, embedding_size, middle_number, num_iterations):
 
         super().__init__()
 
@@ -26,9 +26,8 @@ class EpisodeModule(nn.Module):
 
         self.num_iterations = num_iterations
 
-        g_score = FeatureVector(embedding_size, middle_number)
+        self.g_score = FeatureVector(embedding_size, middle_number)
 
-        self.g_score = g_score.to(device)
 
     def forward(self, m0, facts, question, h0=0):
 
