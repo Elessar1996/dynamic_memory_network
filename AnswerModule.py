@@ -17,7 +17,7 @@ class AnswerModule(nn.Module):
     self.gru = nn.GRU(input_size=embedding_size, hidden_size=embedding_size, 
                       num_layers=1, batch_first=True)
     self.softmax = nn.Softmax()
-    self.linear_layer_1 = nn.Linear(in_features=embedding_size, out_features=1)
+    self.linear_layer_1 = nn.Linear(in_features=embedding_size, out_features=vocab_size)
     self.linear_layer_2 = nn.Linear(in_features=middle_size+1, out_features=1)
 
   def forward(self, m0, q):
