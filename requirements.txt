@@ -1,0 +1,6 @@
+torch
+nltk
+numpy
+torchdata
+torchtext
+spacy
