@@ -53,6 +53,5 @@ class EpisodeModule(nn.Module):
       h = h_new
       e = h_new
       m = self.memory_gru(m, e)[0]
-      print('------------------------------------------------')
 
     return m

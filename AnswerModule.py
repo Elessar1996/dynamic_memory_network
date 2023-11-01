@@ -25,22 +25,15 @@ class AnswerModule(nn.Module):
     a0 = m0[:, -1, :]
 
     # y0 = self.softmax(self.linear_layer(a0))
-    
-    print('**********************')
+
     # print(f'y0 shape: {y0.shape}')
-    print(f'q shape: {q.shape}')
-    print(f'a0 shape: {a0.unsqueeze(dim=1).shape}')
-    print('**********************')
+
     
     concatenated_tensor = torch.cat((q, a0.unsqueeze(dim=1)), dim=1)
-    print(f'concatenated_tensor shape: {concatenated_tensor.shape}')
     a1 = self.gru(concatenated_tensor, a0.unsqueeze(dim=0))[0]
-    print(f'a1 shape: {a1.shape}')
 
     intermediate_a1 = self.linear_layer_1(a1)
-    print(f'intermediate_a1: {intermediate_a1.shape}')
     upper_intermediate_a1 = self.linear_layer_2(torch.transpose(intermediate_a1, 1, 2))
-    print(f'upper_intermediate_a1: {upper_intermediate_a1.shape}')
     advanced_a1 = upper_intermediate_a1.squeeze(dim=-1)
     y1 = self.softmax(advanced_a1)
     
